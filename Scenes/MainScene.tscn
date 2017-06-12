@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://Scripts/GameScript.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/BackgroundScene.tscn" type="PackedScene" id=2]
@@ -21,6 +21,16 @@ extents = Vector2( 33.3031, 33.1895 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 510.782, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 300.695 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 298.201 )
 
 [node name="RootNode" type="Node"]
 
@@ -61,6 +71,7 @@ _update_shape_index = 0
 "paddles",
 ]]
 
+editor/display_folded = true
 transform/pos = Vector2( 1018, 300 )
 transform/scale = Vector2( 0.163195, 1.59423 )
 input/pickable = false
@@ -88,6 +99,7 @@ _update_shape_index = 0
 "ball",
 ]]
 
+editor/display_folded = true
 transform/pos = Vector2( 512, 300 )
 transform/scale = Vector2( 0.312991, 0.317674 )
 input/pickable = false
@@ -112,6 +124,7 @@ _update_shape_index = 0
 
 [node name="Wall1" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 512, -8 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
@@ -132,6 +145,7 @@ _update_shape_index = 0
 
 [node name="Wall2" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 512, 608 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
@@ -179,5 +193,45 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Player1Goal" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -2, 300 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Goal"]
+
+transform/pos = Vector2( -2, 300 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Player2Goal" type="Area2D" parent="."]
+
+transform/pos = Vector2( 1026, 300 )
+input/pickable = true
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Goal"]
+
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="body_enter" from="Player1Goal" to="Ball" method="_on_Player1Goal_body_enter"]
+
+[connection signal="body_enter" from="Player2Goal" to="Ball" method="_on_Player2Goal_body_enter"]
 
 
