@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=1]
 
-[ext_resource path="res://BackgroundScene.tscn" type="PackedScene" id=1]
-[ext_resource path="res://playerScript.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/BackgroundScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/playerScript.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://enemyScript.gd" type="Script" id=4]
-[ext_resource path="res://ballScript.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/enemyScript.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/ballScript.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
