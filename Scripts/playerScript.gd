@@ -3,6 +3,7 @@ extends KinematicBody2D
 const speed = 100
 var projectResolution=Vector2(Globals.get("display/width"),Globals.get("display/height"))
 var size = Vector2()
+var score = 0
 
 func _ready():
 	set_fixed_process(true)
